@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Repository.iml" filepath="$PROJECT_DIR$/.idea/modules/Repository.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Repository_main.iml" filepath="$PROJECT_DIR$/.idea/modules/Repository_main.iml" group="Repository" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Repository_test.iml" filepath="$PROJECT_DIR$/.idea/modules/Repository_test.iml" group="Repository" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/hskarlsruhe_crawler/hskarlsruhe_crawler.iml" filepath="$PROJECT_DIR$/.idea/modules/hskarlsruhe_crawler/hskarlsruhe_crawler.iml" group="hskarlsruhe_crawler" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/hskarlsruhe_crawler/hskarlsruhe_crawler_main.iml" filepath="$PROJECT_DIR$/.idea/modules/hskarlsruhe_crawler/hskarlsruhe_crawler_main.iml" group="hskarlsruhe_crawler" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/hskarlsruhe_crawler/hskarlsruhe_crawler_test.iml" filepath="$PROJECT_DIR$/.idea/modules/hskarlsruhe_crawler/hskarlsruhe_crawler_test.iml" group="hskarlsruhe_crawler" />
+    </modules>
+  </component>
+</project>
