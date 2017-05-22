@@ -26,10 +26,10 @@ public class Crawler {
     public Crawler() {
         //BASE_SUB_URLS.put("fk-ab/ueber-uns/personen", new ABParser());
         //BASE_SUB_URLS.put("fk-eit/ueber-uns/personen", new EITParser());
-        BASE_SUB_URLS.put("fk-iwi/ueber-uns/personen", new IWIParser());
+        //BASE_SUB_URLS.put("fk-iwi/ueber-uns/personen", new IWIParser());
         //BASE_SUB_URLS.put("imm/ueber-uns/personen", new IMMParser());
         //BASE_SUB_URLS.put("mmt/ueber-uns/personen", new MMTParser());
-        //BASE_SUB_URLS.put("w/ueber-uns/personen", new WParser());
+        BASE_SUB_URLS.put("w/ueber-uns/personen", new WParser());
     }
 
     private List<String> done = new ArrayList<>();

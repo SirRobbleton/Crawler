@@ -79,14 +79,19 @@ public abstract class Parser {
         return document.getElementsByClass("ce-bodytext");
     }
 
-    private Person parsePerson(Element element) {
-        if (element.text().contains("In dieser Spalte finden Sie eine Liste der Lehrbeauftragten")) {
+    protected Person parsePerson(Element e) {
+        if (e.text().contains("In dieser Spalte finden Sie eine Liste der Lehrbeauftragten")) {
 //            avoid lists like:
 //            http://www.hs-karlsruhe.de/fakultaeten/informatik-und-wirtschaftsinformatik/personen/lehrbeauftragte
             return null;
         }
 
+        Elements personData = e.getElementsByClass("ce-bodytext");
+        Element element = personData.get(0);
+
+
         Person person = new Person();
+
 
         person.setLastName(parseLastName(element));
         person.setFirstName(parseFirstNames(element));
@@ -104,18 +109,69 @@ public abstract class Parser {
 
     protected String parseRoom(Element element) {
         String roomRaw = getRoomRaw(element);
-        String[] locationDetails = roomRaw.split(" ");
+        String[] locationDetails = roomRaw.split("\\s+");
         int len = locationDetails.length;
-        for (int i = 0; i < len; i++) {
-            if (locationDetails[i] == "Raum") {
-                return locationDetails[i+1];
+        String room = new String();
+        if (len > 0) {
+            for (int i = 0; i < len; i++) {
+                if (locationDetails[i].equals("Raum") || locationDetails[i].equals("Zimmer")) {
+                    room = locationDetails[i + 1];
+                }
             }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         }
-        return "";
+        return room;
     }
 
     protected String parseBuilding(Element element) {
         String roomRaw = getRoomRaw(element);
+
         if (roomRaw.matches("[a-zA-Z]\\d+")) {
             return roomRaw.substring(0, 1);
         } else {
@@ -128,11 +184,11 @@ public abstract class Parser {
         }
     }
 
-    private String getRoomRaw(Element element) {
+    protected String getRoomRaw(Element element) {
         List<Element> list = element.getElementsByClass("bodytext");
 
         for (Element el : list){
-            if (el.text().contains("Raum")){
+            if (el.text().contains("Raum") || el.text().contains("Zimmer")){
                 return el.text();
             }
         }
@@ -255,17 +311,20 @@ public abstract class Parser {
 
     protected String parseImage(Element element) {
         Elements elements = element.getElementsByTag("img");
+        String src = new String();
 
         if (elements.size() > 0) {
             Element img = elements.get(0);
-            String src = img.attr("src");
-            URI uri = URI.create(src);
+            src = img.attr("src");
+            /*URI uri = URI.create(src);
             if (!uri.isAbsolute()) {
                 uri = URI.create(BASE_URI.getHost() + "/" + src);
             }
             return uri.toString();
+            */
+            return src;
         }
-        return "";
+        return src;
     }
 
     protected String parsePhone(Element element) {
@@ -292,7 +351,7 @@ public abstract class Parser {
         }
     }
 
-    private boolean isValidPerson(Person person) {
+    public static boolean isValidPerson(Person person) {
         if (StringUtil.isBlank(person.getLastName())) return false;
         //if (StringUtil.isBlank(person.getEmail())) return false;
 //        if (StringUtil.isBlank(person.getBuilding())) return false;
